@@ -1,0 +1,40 @@
+// This code will allow a user to select criteria from a google spreadsheet and then display the best applicant based on the criteria.
+
+// Create a variable to store the spreadsheet data
+var spreadsheetData;
+
+// Create a variable to store the criteria
+var criteria;
+
+// Create a variable to store the best applicant
+var bestApplicant;
+
+// Create a function to pull the data from the spreadsheet
+function getSpreadsheetData() {
+  // Code to pull the data from the google spreadsheet
+  spreadsheetData = // code to get spreadsheet data;
+}
+
+// Create a function to get the criteria from the user
+function getCriteria() {
+  // Code to get the criteria from the user
+  criteria = // code to get criteria from user;
+}
+
+// Create a function to analyze the spreadsheet data
+function analyzeSpreadsheetData() {
+  // Code to analyze the spreadsheet data based on the criteria
+  bestApplicant = // code to analyze spreadsheet data;
+}
+
+// Create a function to display the best applicant
+function displayBestApplicant() {
+  // Code to display the best applicant
+  console.log(bestApplicant);
+}
+
+// Call the functions
+getSpreadsheetData();
+getCriteria();
+analyzeSpreadsheetData();
+displayBestApplicant();
