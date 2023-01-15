@@ -1,0 +1,16 @@
+<form id="filter-form">
+  <label for="search-input">Search:</label>
+  <input type="text" id="search-input" name="search-input">
+
+  <label for="toggle-switch">Approved:</label>
+  <input type="checkbox" id="toggle-switch" name="toggle-switch">
+
+  <label for="checkbox-income">Income above 50k:</label>
+  <input type="checkbox" id="checkbox-income" name="checkbox-income">
+
+  <label for="checkbox-age">Age above 30:</label>
+  <input type="checkbox" id="checkbox-age" name="checkbox-age">
+
+  <input type="submit" value="Filter">
+  <input type="reset" value="Clear">
+</form>
