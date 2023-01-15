@@ -41,7 +41,7 @@ gapi.load('client:auth2', function() {
   }).then(function () {
     // Use the Google Sheets API to retrieve the data from the sheet
     gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: 'Rental Application (Responses)',
+      spreadsheetId: '148757625',
       range: 'Tenants!A1:Z99999'
     }).then(function(response) {
       var data = response.result.values;
