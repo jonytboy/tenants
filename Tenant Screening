@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+<body>
 <form id="filter-form">
   <label for="search-input">Search:</label>
   <input type="text" id="search-input" name="search-input">
