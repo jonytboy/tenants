@@ -41,8 +41,8 @@ gapi.load('client:auth2', function() {
   }).then(function () {
     // Use the Google Sheets API to retrieve the data from the sheet
     gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: 'Tenants',
-      range: 'Sheet1!A1:Z'
+      spreadsheetId: 'Rental Application (Responses)',
+      range: 'Tenants!A1:Z99999'
     }).then(function(response) {
       var data = response.result.values;
       // Use the data to filter the data based on the criteria provided by the checkboxes
