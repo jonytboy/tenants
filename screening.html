@@ -17,3 +17,30 @@
   <input type="submit" value="Filter">
   <input type="reset" value="Clear">
 </form>
+<form id="filter-form">
+  <label for="search-input">Search:</label>
+  <input type="text" id="search-input" name="search-input">
+  <input type="submit" value="Filter">
+</form>
+
+<script>
+    // Get the form element
+    var form = document.getElementById("filter-form");
+
+    // Add an event listener to the form's submit event
+    form.addEventListener("submit", function(event) {
+        // Prevent the form from being submitted
+        event.preventDefault();
+        
+        // Get the value of the search input field
+        var searchValue = document.getElementById("search-input").value;
+        
+        // Use the value of the search input field to filter the data
+        // using the Google Sheets API
+        
+        // Code to filter the data using the Google Sheets API goes here
+        
+        // Update the UI to display only the filtered data
+        // Code to update the UI goes here
+    });
+</script>
