@@ -4,14 +4,14 @@
 " name="checkbox-income">
 
 <label for="checkbox-age">Age above 30:</label> <input type="checkbox" id="checkbox-age" name="checkbox-age"> <input type="submit" value="Filter"> <input type="reset" value="Clear"> 
-
-</form> <script> // Get the form element var form = document.getElementById("filter-form")
-// Add an event listener to the form's submit event form.addEventListener("submit", function(event) { 
-  
-  // Data Table Element
+ // Data Table Element
   
   <table id="filtered-data-table"></table>
   
+</form> <script> // Get the form element var form = document.getElementById("filter-form")
+
+  // Add an event listener to the form's submit event form.addEventListener("submit", function(event) { 
+
   // Prevent the form from being submitted event.preventDefault(); 
   
   // Get the value of the search input field var searchValue = document.getElementById("search-input").value; 
@@ -30,7 +30,7 @@ gapi.load('client:auth2', function() {
     
     // Use the Google Sheets API to retrieve the data from the sheet
     gapi.client.sheets.spreadsheets.values.get({
-      spreadsheetId: '1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc/edit#gid=148757625',
+      spreadsheetId: '148757625',
       range: 'Tenants!A1:Z'}).then(function(response) { var data = response.result.values; 
   
   // Use the data to filter the data based on the criteria provided by the checkboxes 
