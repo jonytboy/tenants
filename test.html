@@ -35,7 +35,23 @@ gapi.load('client:auth2', function() {
   
   // Use the data to filter the data based on the criteria provided by the checkboxes 
   
-  // Code to filter the data goes here 
+  // Code to filter whole spreadsheet search the data goes here 
+                                                            
+ // Create an empty array to store the filtered data
+var filteredData = [];
+
+// Loop through the data array
+for (var i = 0; i < data.length; i++) {
+    var row = data[i];
+    // Check if the row contains the search criteria
+    for(var j=0;j<row.length;j++){
+        if (row[j].indexOf(searchValue) !== -1) {
+            // If the row matches the criteria, add it to the filteredData array
+            filteredData.push(row);
+            break;
+        }
+    }
+}                                                           
   
   // Create an empty array to store the filtered data
 var filteredData = [];
