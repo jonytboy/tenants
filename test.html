@@ -8,6 +8,10 @@
 </form> <script> // Get the form element var form = document.getElementById("filter-form")
 // Add an event listener to the form's submit event form.addEventListener("submit", function(event) { 
   
+  // Data Table Element
+  
+  <table id="filtered-data-table"></table>
+  
   // Prevent the form from being submitted event.preventDefault(); 
   
   // Get the value of the search input field var searchValue = document.getElementById("search-input").value; 
@@ -33,7 +37,46 @@ gapi.load('client:auth2', function() {
   
   // Code to filter the data goes here 
   
+  // Create an empty array to store the filtered data
+var filteredData = [];
+
+// Loop through the data array
+for (var i = 0; i < data.length; i++) {
+    var row = data[i];
+    
+  // Check if the row matches the criteria provided by the toggle switches and search input field
+    if ((row[5] === "yes" && isGuarantorChecked) || (row[6] === "yes" && isEmployedChecked) || (row[7] >= 3000 && isIncomeChecked) || (row[2] >= 30 && isAgeChecked) || (row[1].indexOf(searchValue) !== -1)) {
+        // If the row matches the criteria, add it to the filteredData array
+        filteredData.push(row);
+    }
+}                                                          
+                                                            
   // Update the UI to display only the filtered data 
+                                                            
+       // Get the element where you want to display the filtered data
+var table = document.getElementById("filtered-data-table");
+
+// Clear the table of any previous data
+table.innerHTML = "";
+
+// Loop through the filtered data array
+for (var i = 0; i < filteredData.length; i++) {
+    var row = filteredData[i];
+    // Create a new table row
+    var tr = document.createElement("tr");
+    // Loop through the values in the row
+    for (var j = 0; j < row.length; j++) {
+        // Create a new table cell
+        var td = document.createElement("td");
+        // Set the text content of the cell to the value
+        td.textContent = row[j];
+        // Add the cell to the row
+        tr.appendChild(td);
+    }
+    // Add the row to the table
+    table.appendChild(tr);
+}
+                                                     
   
   // Code to update the UI goes here }, function(response) { console.log('Error: ' + response.result.error.message); }); }); }); });
 
