@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html> <body> <form id="filter-form"> <label for="search-input">Search:</label> <input type="text" id="search-input" name="search-input"> <label for="toggle-switch-guarantor">Guarantor:</label> <input type="checkbox" id="toggle-switch-guarantor" name="toggle-switch-guarantor"> <label for="toggle-switch-employed">Employed:</label> <input type="checkbox" id="toggle-switch-employed" name="toggle-switch-employed"> <label for="checkbox-income">Monthly Combined Income:</label> <input type="checkbox" id="checkbox-income 
+
+" name="checkbox-income">
+
+<label for="checkbox-age">Age above 30:</label> <input type="checkbox" id="checkbox-age" name="checkbox-age"> <input type="submit" value="Filter"> <input type="reset" value="Clear"> 
+
+</form> <script> // Get the form element var form = document.getElementById("filter-form")
+// Add an event listener to the form's submit event form.addEventListener("submit", function(event) { // Prevent the form from being submitted event.preventDefault(); // Get the value of the search input field var searchValue = document.getElementById("search-input").value; // Get the values of the toggle switches var isGuarantorChecked = document.getElementById("toggle-switch-guarantor").checked; var isEmployedChecked = document.getElementById("toggle-switch-employed").checked; var isIncomeChecked = document.getElementById("checkbox-income").checked; var isAgeChecked = document.getElementById("checkbox-age").checked; // Load the API client and auth2 library gapi.load('client:auth2', function() { gapi.client.init({ apiKey: 'API_KEY', clientId: 'CLIENT_ID', discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"], scope: "https://www.googleapis.com/auth/spreadsheets.readonly" }).then(function () { // Use the Google Sheets API to retrieve the data from the sheet gapi.client.sheets.spreadsheets.values.get({ spreadsheetId: 'SHEET_ID', range: 'Sheet1!A1:Z' }).then(function(response) { var data = response.result.values; // Use the data to filter the data based on the criteria provided by the checkboxes // Code to filter the data goes here // Update the UI to display only the filtered data // Code to update the UI goes here }, function(response) { console.log('Error: ' + response.result.error.message); }); }); }); });
+
+</script> </body> </html>
