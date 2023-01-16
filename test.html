@@ -32,6 +32,28 @@ gapi.load('client:auth2', function() {
     gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: '1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc',
       range: '148757625!A1:Z'}).then(function(response) { var data = response.result.values; 
+                                                         
+                                                         // Get the table element
+var table = document.getElementById("filtered-data-table");
+
+// Loop through the filtered data array
+for (var i = 0; i < filteredData.length; i++) {
+    var row = filteredData[i];
+    // Create a new table row
+    var tr = document.createElement("tr");
+    // Loop through the values in the row
+    for (var j = 0; j < row.length; j++) {
+        // Create a new table cell
+        var td = document.createElement("td");
+        // Set the text of the cell to the value in the row
+        td.innerText = row[j];
+        // Add the cell to the row
+        tr.appendChild(td);
+    }
+    // Add the row to the table
+    table.appendChild(tr);
+}
+
   
   // Use the data to filter the data based on the criteria provided by the checkboxes 
   
