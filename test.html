@@ -61,8 +61,8 @@
       // Use the Google Sheets API to retrieve the data from the sheet
       gapi.client.sheets.spreadsheets.values
         .get({
-          spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ",
-          range: 'Tenants!A1:Z99999'
+          spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc",
+          range: 'A1:Z99999'
         })
         .then(function(response) {
           var data = response.result.values;
