@@ -81,6 +81,35 @@
           }
           // Get the table element
           var table = document.getElementById("filtered-data-table");
+      // Get the table element
+      var table = document.getElementById("filtered-data-table");
+
+      // Clear the existing data from the table
+      table.innerHTML = "";
+
+      // Loop through the filtered data array
+      for (var i = 0; i < filteredData.length; i++) {
+        var row = filteredData[i];
+        //Create a new table row element
+        var tableRow = document.createElement("tr");
+
+        // Loop through the columns of the current row
+        for (var j = 0; j < row.length; j++) {
+            // Create a new table cell element
+            var tableCell = document.createElement("td");
+
+            // Set the cell's text to the value of the current column
+            tableCell.innerText = row[j];
+
+            // Append the cell to the row
+            tableRow.appendChild(tableCell);
+        }
+
+        // Append the row to the table
+        table.appendChild(tableRow);
+      }
+    }
+});
 
           // Clear the existing data from the table
           table.innerHTML = "";
