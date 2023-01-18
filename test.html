@@ -104,11 +104,25 @@ form.addEventListener("submit", function(event) {
   // Loop through the data array
   for (var i = 0; i < data.length; i++) {
     var row = data[i];
-    // Check if the row matches the criteria provided by the checkboxes and the search input field
-    if ((row[11] === "yes" && isGuarantorChecked) || (row[12] === "yes" && isEmployedChecked) || (row[7] > 3000 && isIncomeChecked) || (row[8] > 30 && isAgeChecked)) {
-        // If the row matches the criteria, add it to the filteredData array
+    
+   var isGuarantorChecked = document.getElementById("toggle-switch-guarantor").checked;
+var filteredData = [];
+
+for (var i = 0; i < data.length; i++) {
+    var row = data[i];
+    var isGuarantor = false;
+
+    for (var j = 11; j <=999; j++) {
+        if (row[j] === "yes") {
+            isGuarantor = true;
+            break;
+        }
+    }
+    if (isGuarantor && isGuarantorChecked) {
         filteredData.push(row);
     }
+}
+
   }
   // Get the table element
   var table = document.getElementById("filtered-data-table");
