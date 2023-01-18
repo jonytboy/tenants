@@ -106,6 +106,36 @@ for (var j = 0; j < row.length; j++) {
     // Set the cell's text to the current value
     tableCell.innerHTML = row[j];
 }
+// Get the table element
+var table = document.getElementById("filtered-data-table");
+
+// Clear the existing data from the table
+table.innerHTML = "";
+
+// Loop through the filtered data array
+for (var i = 0; i < filteredData.length; i++) {
+    var row = filteredData[i];
+
+    // Create a new table row element
+    var tableRow = document.createElement("tr");
+
+    // Loop through the values in the current row
+    for (var j = 0; j < row.length; j++) {
+        var cellValue = row[j];
+
+        // Create a new table cell element
+        var tableCell = document.createElement("td");
+
+        // Add the cell value to the table cell element
+        tableCell.innerHTML = cellValue;
+
+        // Add the table cell element to the table row element
+        tableRow.appendChild(tableCell);
+    }
+
+    // Add the table row element to the table
+    table.appendChild(tableRow);
+}
 
 
 
