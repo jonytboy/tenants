@@ -70,6 +70,36 @@
 console.log("Google Sheets API client initialized.");
 
         console.log(response);
+gapi.client
+    .init({
+      apiKey: "AIzaSyDHsFw4h1IepNlPWBj42xpFXTXsOVBKx2g",
+      clientId: "304488210553-plfcqmslk4tgsjtpavpg869cjigqiprv.apps.googleusercontent.com",
+      discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+      scope: "https://www.googleapis.com/auth/spreadsheets.readonly",
+    })
+    .then(function() {
+        console.log('Successfully connected to the API.');
+        // Use the Google Sheets API to retrieve the data from the sheet
+      gapi.client.sheets.spreadsheets.values
+        .get({
+          spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc",
+          range: 'Tenants!A1:Z99999'
+        })
+        .then(function(response) {
+          var data = response.result.values;
+          // Create an empty array to store the filtered data
+          var filteredData = [];
+
+          // Loop through the data array
+          for (var i = 0; i < data.length; i++) {
+            var row = data[i];
+            // Check if the row matches the criteria provided by the toggle switches and search input field
+            if ((row[11] === "yes" && isGuarantorChecked) || (row[12] === "yes" && isEmployedChecked)) {
+                // If the row matches the criteria, add it to the filteredData array
+                filteredData.push(row);
+            }
+          }
+         
 
           // Loop through the data array
           for (var i = 0; i < data.length; i++) {
