@@ -87,5 +87,51 @@
     // Add the row to the table
     table.appendChild(tr);
   }
+form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var searchValue = document.getElementById("search-input").value;
+        var isGuarantorChecked = document.getElementById("toggle-switch-guarantor").checked;
+        var isEmployedChecked = document.getElementById("toggle-switch-employed").checked;
+        var isIncomeChecked = document.getElementById("checkbox-income").checked;
+        var isAgeChecked = document.getElementById("checkbox-age").checked;
+        gapi.client.sheets.spreadsheets.values
+                .get({
+                  spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc",
+                  range: 'Sheet1!A1:Z'}).then(function(response) { var data = response.result.values; 
+                                                         
+  // Create an empty array to store the filtered data
+  var filteredData = [];
+  // Loop through the data array
+  for (var i = 0; i < data.length; i++) {
+    var row = data[i];
+    // Check if the row matches the criteria provided by the checkboxes and the search input field
+    if ((row[5] === "yes" && isGuarantorChecked) || (row[6] === "yes" && isEmployedChecked) || (row[7] > 3000 && isIncomeChecked) || (row[8] > 30 && isAgeChecked)) {
+        // If the row matches the criteria, add it to the filteredData array
+        filteredData.push(row);
+    }
+  }
+  // Get the table element
+  var table = document.getElementById("filtered-data-table");
+  // Clear the existing data from the table
+  table.innerHTML = "";
+  // Loop through the filtered data array
+  for (var i = 0; i < filteredData.length; i++) {
+    var row = filteredData[i];
+    // Create a new table row
+    var tr = document.createElement("tr");
+    // Loop through the values in the row
+    for (var j = 0; j < row.length; j++) {
+        // Create a new table cell
+        var td = document.createElement("td");
+        // Set the text of the cell to the value in the row
+        td.innerText = row[j];
+        // Add the cell to the row
+        tr.appendChild(td);
+    }
+    // Add the row to the table
+    table.appendChild(tr);
+  }
+});
+});
 
 
