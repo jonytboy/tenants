@@ -35,6 +35,7 @@
         var isEmployedChecked = document.getElementById("toggle-switch-employed").checked;
         var isIncomeChecked = document.getElementById("checkbox-income").checked;
         var isAgeChecked = document.getElementById("checkbox-age").checked;
+<div id="table-container"></div>
 
         // Load the API client and auth2 library
          gapi.client
@@ -137,6 +138,75 @@ for (var i = 0; i < filteredData.length; i++) {
     table.appendChild(tableRow);
 }
 
+// Get the table element
+var table = document.getElementById("filtered-data-table");
 
+// Clear the existing data from the table
+table.innerHTML = "";
+
+// Loop through the filtered data array
+for (var i = 0; i < filteredData.length; i++) {
+    var row = filteredData[i];
+
+    // Create a new table row element
+    var tr = document.createElement("tr");
+
+    // Loop through the columns of data in the row
+    for (var j = 0; j < row.length; j++) {
+        // Create a new table cell element
+        var td = document.createElement("td");
+
+        // Set the text content of the cell to the value of the corresponding column in the row
+        td.textContent = row[j];
+
+        // Append the cell to the row
+        tr.appendChild(td);
+    }
+
+    // Append the row to the table
+    table.appendChild(tr);
+}
+
+// Get the table container element
+var container = document.getElementById("table-container");
+
+// Create a table element
+var table = document.createElement("table");
+table.id = "filtered-data-table";
+
+// Create a table header row
+var headerRow = document.createElement("tr");
+
+// Add table header cells for each column of data
+for (var i = 0; i < filteredData[0].length; i++) {
+  var headerCell = document.createElement("th");
+  headerCell.innerHTML = filteredData[0][i];
+  headerRow.appendChild(headerCell);
+}
+
+table.appendChild(headerRow);
+
+// Loop through the filtered data array
+for (var i = 0; i < filteredData.length; i++) {
+  var row = filteredData[i];
+  // Create a new table row element
+  var tableRow = document.createElement("tr");
+
+  // Loop through the row's data
+  for (var j = 0; j < row.length; j++) {
+    // Create a new table cell element
+    var tableCell = document.createElement("td");
+    tableCell.innerHTML = row[j];
+
+    // Add the table cell to the row
+    tableRow.appendChild(tableCell);
+  }
+
+  // Add the table row to the table
+  table.appendChild(tableRow);
+}
+
+// Add the table to the container element
+container.appendChild(table);
 
 
