@@ -52,6 +52,19 @@
                 .get({
                   spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc",
                   range: 'Tenants!A1:Z99999'
+                
+                gapi.client.sheets.spreadsheets.values
+                .get({
+                  spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc",
+                  range: 'Tenants!A1:Z99999'
+                })
+                .then(function(response) {
+                  var data = response.result.values;
+                  // Your code to filter the data goes here
+                }, function(response) {
+                  console.log("Error: " + response.result.error.message);
+                });
+
                  // Create an empty array to store the filtered data
   var filteredData = [];
 
