@@ -95,6 +95,17 @@
         });
     });
 });
+// Create a new table row element
+var tableRow = table.insertRow();
+
+// Loop through the values in the current row
+for (var j = 0; j < row.length; j++) {
+    // Create a new table cell element
+    var tableCell = tableRow.insertCell();
+
+    // Set the cell's text to the current value
+    tableCell.innerHTML = row[j];
+}
 
 
 
