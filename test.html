@@ -81,6 +81,40 @@
             // check
             
             gapi.auth2.getAuthInstance().isSignedIn.list
+  // Use the Google Sheets API to retrieve the data from the sheet
+  gapi.client.sheets.spreadsheets.values
+    .get({
+      spreadsheetId: "1WnkE_M-C5mVOjDTbgEzR6VkIHLQlChlZ-MmLtxg7Ruc",
+      range: 'Tenants!A1:Z99999'
+    })
+    .then(function(response) {
+      // Store the data from the sheet in a variable
+      var data = response.result.values;
+
+      // Create an empty array to store the filtered data
+      var filteredData = [];
+
+      // Loop through the data array
+      for (var i = 0; i < data.length; i++) {
+        var row = data[i];
+        // Check if the row matches the criteria provided by the toggle switches and search input field
+        if ((row[11] === "yes" && isGuarantorChecked) || (row[12] === "yes" && isEmployedChecked)) {
+          // If the row matches the criteria, add it to the filteredData array
+          filteredData.push(row);
+        }
+      }
+      // Get the table element
+      var table = document.getElementById("filtered-data-table");
+
+      // Clear the existing data from the table
+      table.innerHTML = "";
+
+      // Loop through the filtered data array
+      for (var i = 0; i < filteredData.length; i++) {
+        var row = filteredData[i];
+        // Create a new table row
+        var tr = document.createElement("tr");
+        // Loop through...
 
             
   // Get the table element
